@@ -164,17 +164,24 @@
         }
 
         .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
+    display: grid;
+    /* 1. 카드의 개수와 상관없이 전체 너비를 100%로 고정 */
+    width: 100%; 
+    /* 2. 한 줄에 4개가 들어갈 수 있는 공간을 미리 확보 (카드 4개 분량) */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    /* 만약 너무 넓게 퍼지는 게 싫다면 아래처럼 최대 너비를 지정하세요 */
+    max-width: 800px; 
+}
 
         .stat-card {
-            padding: 1.5rem;
-            background: white;
-            border: 1px solid var(--warm-gray);
-            transition: all 0.3s;
+            flex: 1; /* 남은 공간을 카드가 똑같이 나눠 가짐 */
+    padding: 1.5rem;
+    background: white;
+    border: 1px solid var(--warm-gray);
+    transition: all 0.3s;
+    text-align: center; /* 텍스트 중앙 정렬 추가 시 더 깔끔함 */
         }
 
         .stat-card:hover {
@@ -923,7 +930,7 @@
     <!-- Navigation -->
     <nav>
         <div class="container">
-            <div class="nav-brand">JWJ</div>
+            <div class="nav-brand"></div>
             <ul class="nav-links">
                 <li><a href="#about">소개</a></li>
                 <li><a href="#experience">경력</a></li>
@@ -940,25 +947,25 @@
                 <div class="hero-content fade-in">
                     <h1>정욱진</h1>
                     <p class="hero-subtitle">웹 개발자</p>
-                    <p style="color: var(--sage); margin-bottom: 2rem;">사용자 경험을 코드로 완성합니다</p>
+                    <p style="color: var(--sage); margin-bottom: 2rem;">고객사에 니즈에 맞춰 개발해 온 SI개발자 입니다.</p>
                     
                     <div class="hero-stats">
-                        <div class="stat-card fade-in delay-100">
+                        <div class="stat-card fade-in delay-300">
                             <div class="stat-value">4+</div>
-                            <div class="stat-label">Years of Experience</div>
-                        </div>
-                        <div class="stat-card fade-in delay-200">
-                            <div class="stat-value">12+</div>
-                            <div class="stat-label">Projects Completed</div>
+                            <div class="stat-label">경력</div>
                         </div>
                         <div class="stat-card fade-in delay-300">
+                            <div class="stat-value">9</div>
+                            <div class="stat-label">프로젝트</div>
+                        </div>
+                        <!-- <div class="stat-card fade-in delay-300">
                             <div class="stat-value">5+</div>
                             <div class="stat-label">Team Members Mentored</div>
                         </div>
                         <div class="stat-card fade-in delay-300">
                             <div class="stat-value">68%</div>
                             <div class="stat-label">Performance Improvements</div>
-                        </div>
+                        </div> -->
                     </div>
 
                     <div class="hero-links fade-in delay-300">
@@ -967,14 +974,14 @@
                                 <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                             </svg>
                         </a>
-                        <a href="https://linkedin.com/in/your-profile" class="hero-link" title="LinkedIn">
+                        <!-- <a href="https://linkedin.com/in/your-profile" class="hero-link" title="LinkedIn">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
                                 <rect x="2" y="9" width="4" height="12"></rect>
                                 <circle cx="4" cy="4" r="2"></circle>
                             </svg>
-                        </a>
-                        <a href="mailto:your-email@example.com" class="hero-link" title="Email">
+                        </a> -->
+                        <a href="3dnr22@gmail.com" class="hero-link" title="Email">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <rect x="2" y="4" width="20" height="16" rx="2"></rect>
                                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
@@ -996,19 +1003,28 @@
 
             <div class="about-grid">
                 <div class="about-text fade-in">
-                    <p>4년간 위존에서 개발자 개발을 담당했습니다. Vue 3, React, TypeScript를 중심으로 성능 최적화와 사용자 경험 개선에 집중하고 있습니다.</p>
-                    <p>단순히 기능을 구현하는 것을 넘어, 사용자가 서비스를 이용하면서 느끼는 모든 순간을 세심하게 고려합니다. 빠른 로딩, 부드러운 인터랙션, 직관적인 UI가 사용자 만족도를 결정한다고 믿습니다.</p>
+                    <p>
+                        4년차 웹 개발자로, 다양한 고객사의 비즈니스 요구사항을 분석하여 실제 업무 시스템으로 구현하는 역할을 수행해 왔습니다. 
+                        단순 개발을 넘어 사용자의 업무 흐름을 파악해 화면 정의서를 작성하고, 이에 최적화된 DB 모델링을 직접 진행하며 
+                        프론트엔드와 백엔드를 아우르는 풀스택 개발자로 성장했습니다.
+                    </p>
+                    <p>
+                        Oracle과 MSSQL을 활용한 데이터 설계부터 구매포탈, HR, SAP 등 사내 주요 시스템과의 인터페이스 연동 업무를 안정적으로 처리했습니다. 
+                        또한 SVN, Git을 통한 형상관리와 Jenkins 기반의 빌드/배포 자동화 환경을 구축하여, 
+                        복잡한 비즈니스 로직이 포함된 서비스도 효율적으로 운영할 수 있는 실무 역량을 보유하고 있습니다.
+                    </p>
                     
                     <div class="about-quote">
-                        "좋은 코드는 그 자체로 문서가 됩니다."
+                        "설계부터 배포까지, 비즈니스 로직을 안정적인 코드로 구현"
                     </div>
 
                     <div class="skill-tags">
-                        <span class="skill-tag">Vue 3</span>
-                        <span class="skill-tag">TypeScript</span>
-                        <span class="skill-tag">Composition API</span>
-                        <span class="skill-tag">성능 최적화</span>
-                        <span class="skill-tag">디자인 시스템</span>
+                        <span class="skill-tag">Vue</span>
+                        <span class="skill-tag">SpringBoot</span>
+                        <span class="skill-tag">Jenkins</span>
+                        <span class="skill-tag">Gitea</span>
+                        <span class="skill-tag">Nginx</span>
+                        <span class="skill-tag">Oracle/MSSQL</span>
                     </div>
                 </div>
 
@@ -1022,8 +1038,8 @@
                                 <line x1="12" y1="12" x2="4" y2="7.5"></line>
                             </svg>
                         </div>
-                        <h4 class="value-title">클린 코드</h4>
-                        <p class="value-desc">유지보수 가능하고 읽기 쉬운 코드를 작성하는 것을 최우선으로 생각합니다.</p>
+                        <h4 class="value-title">Full-Stack 개발</h4>
+                        <p class="value-desc">Vue와 Spring Boot를 주력으로, 프론트엔드부터 백엔드까지 유기적으로 연결된 서비스를 구현합니다.</p>
                     </div>
                     <div class="value-card">
                         <div class="value-icon">
@@ -1031,8 +1047,8 @@
                                 <polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polyline>
                             </svg>
                         </div>
-                        <h4 class="value-title">성능 최적화</h4>
-                        <p class="value-desc">사용자가 느끼는 체감 성능을 개선하기 위해 Core Web Vitals를 항상 모니터링합니다.</p>
+                        <h4 class="value-title">DB 및 화면 설계</h4>
+                        <p class="value-desc">고객 인터뷰를 바탕으로 화면 정의서를 작성하고, Oracle/MSSQL 기반의 최적화된 DB를 설계합니다.</p>
                     </div>
                     <div class="value-card">
                         <div class="value-icon">
@@ -1043,8 +1059,8 @@
                                 <rect x="3" y="14" width="7" height="7"></rect>
                             </svg>
                         </div>
-                        <h4 class="value-title">컴포넌트 설계</h4>
-                        <p class="value-desc">재사용 가능하고 확장 가능한 컴포넌트 아키텍처를 설계합니다.</p>
+                        <h4 class="value-title">빌드/배포 자동화</h4>
+                        <p class="value-desc">Jenkins를 활용하여 소스 코드의 빌드부터 배포까지의 과정을 자동화하여 운영 효율을 극대화합니다.</p>
                     </div>
                     <div class="value-card">
                         <div class="value-icon">
@@ -1055,8 +1071,8 @@
                                 <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                             </svg>
                         </div>
-                        <h4 class="value-title">협업 & 소통</h4>
-                        <p class="value-desc">디자이너, 백엔드 개발자와의 긴밀한 협업으로 최선의 결과를 만들어냅니다.</p>
+                        <h4 class="value-title">형상관리</h4>
+                        <p class="value-desc">Git과 SVN을 병행 활용하여 소스 이력을 정밀하게 관리하고, 협업 시 충돌 없는 환경을 유지합니다.</p>
                     </div>
                 </div>
             </div>
@@ -1075,15 +1091,15 @@
                 <div class="experience-header">
                     <div class="experience-title">
                         <h3>위존 (WeZon)</h3>
-                        <p class="experience-position">시니어 개발자</p>
+                        <p class="experience-position">미드레벨 개발자</p>
                     </div>
                     <div class="experience-period">
-                        <span>2021.03 — 2025.02</span>
+                        <span>2022.02 — 2026.03</span>
                         <span style="color: var(--terracotta); font-weight: 600;">(4년)</span>
                     </div>
                 </div>
 
-                <p class="experience-desc">한 회사에서 4년간 개발자 개발을 담당하며 초기 주니어 개발자에서 시니어 개발자로 성장했습니다. 사용자 중심의 UI/UX 개선, 성능 최적화, 디자인 시스템 구축 등 다양한 프로젝트를 주도했습니다.</p>
+                <p class="experience-desc">한 회사에서 4년간 풀스택 개발을 담당하며 초기 주니어 개발자에서 미드레벨 개발자로 성장했습니다. 사용자 중심의 UI/UX 개선, 성능 최적화, 아키텍처 설계 등 다양한 프로젝트를 주도했습니다.</p>
 
                 <div>
                     <div class="achievements-title">
@@ -1095,19 +1111,19 @@
                     <div class="achievements-grid">
                         <div class="achievement-item">
                             <span class="achievement-icon">✓</span>
-                            <span class="achievement-text">사내 디자인 시스템 단독 구축 및 운영</span>
+                            <span class="achievement-text">사용자별 API 권한 기반 API 접근 제어 시스템 구축</span>
                         </div>
                         <div class="achievement-item">
                             <span class="achievement-icon">✓</span>
-                            <span class="achievement-text">금융 상품 비교 플랫폼 개발자 아키텍처 설계</span>
+                            <span class="achievement-text">사내 Gitea 서버 구축 및 형상관리 체계화</span>
                         </div>
                         <div class="achievement-item">
                             <span class="achievement-icon">✓</span>
-                            <span class="achievement-text">번들 크기 68% 감소 및 초기 로딩 시간 3초 단축</span>
+                            <span class="achievement-text">SOAP 기반 통신 프로토타입 설계 및 구현</span>
                         </div>
                         <div class="achievement-item">
                             <span class="achievement-icon">✓</span>
-                            <span class="achievement-text">주니어 개발자 5명 멘토링 및 코드 리뷰 문화 정착</span>
+                            <span class="achievement-text">DB 인덱스를 활용한 쿼리 속도 개선</span>
                         </div>
                     </div>
                 </div>
@@ -1116,16 +1132,16 @@
                     <div class="timeline-title">성장 타임라인</div>
                     <div class="timeline-items">
                         <div class="timeline-item">
-                            <div class="timeline-period">2021.03 — 2021.12</div>
+                            <div class="timeline-period">2022.02 — 2025.02</div>
                             <div class="timeline-item-title">주니어 개발자</div>
-                            <div class="timeline-item-desc">레거시 jQuery 코드베이스 파악 및 Vue 마이그레이션 착수. 기초 컴포넌트 개발 및 버그 수정 담당.</div>
+                            <div class="timeline-item-desc">기초 컴포넌트 개발 및 업무 화면 개발</div>
                         </div>
                         <div class="timeline-item">
-                            <div class="timeline-period">2022.01 — 2022.12</div>
-                            <div class="timeline-item-title">개발자</div>
-                            <div class="timeline-item-desc">모바일 웹 리뉴얼 프로젝트 완료. 성능 최적화 경험 축적. 단독 기능 개발 담당.</div>
+                            <div class="timeline-period">2025.03 - 현재</div>
+                            <div class="timeline-item-title">미드레벨 개발자</div>
+                            <div class="timeline-item-desc">프로젝트 개발 리드 및 아키텍처 설계</div>
                         </div>
-                        <div class="timeline-item">
+                        <!-- <div class="timeline-item">
                             <div class="timeline-period">2023.01 — 2023.12</div>
                             <div class="timeline-item-title">미드레벨 개발자</div>
                             <div class="timeline-item-desc">사내 디자인 시스템 단독 구축. 금융 상품 비교 플랫폼 개발 리드. 주니어 멘토링 시작.</div>
@@ -1134,7 +1150,7 @@
                             <div class="timeline-period">2024.01 — 2025.02</div>
                             <div class="timeline-item-title">시니어 개발자</div>
                             <div class="timeline-item-desc">투자 포트폴리오 대시보드 개발자 아키텍처 설계 및 리드. 팀 코드 리뷰 문화 정착.</div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
